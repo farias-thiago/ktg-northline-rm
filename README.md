@@ -26,6 +26,7 @@ The raw files in `data/raw/` are the data pack exactly as received. Every output
 
 | Part | File |
 |---|---|
+| Overview: results, bridge, data issues and design on six pages | [`docs/00_submission_summary.pdf`](docs/00_submission_summary.pdf) |
 | 1. Q3 R&M by branch and month (required format) | [`output/rm_q3_by_branch.csv`](output/rm_q3_by_branch.csv) |
 | 2. Data quality log | [`docs/02_data_quality_log.md`](docs/02_data_quality_log.md) (source: `output/dq_log.csv`) |
 | 3. Reconciliation to Accounting | [`docs/03_reconciliation.md`](docs/03_reconciliation.md) (source: `output/reconciliation.csv`) |
