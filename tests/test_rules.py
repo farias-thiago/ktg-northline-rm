@@ -73,7 +73,7 @@ def test_lakeshore_subtotals_and_text_amounts(con):
 def test_output_file_format(con, tmp_path):
     p = tmp_path / "rm.csv"
     total = write_rm(con, p)
-    rows = list(csv.reader(open(p)))
+    rows = list(csv.reader(open(p, encoding="utf-8")))
     assert rows[0] == ["Branch", "Month", "RM_USD"]
     assert len(rows) == 1 + 13  # RIV/OAK/PIN x 3 months, ELM July, LKS x 3 months
     for b, m, v in rows[1:]:

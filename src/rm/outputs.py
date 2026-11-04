@@ -19,7 +19,7 @@ def _one(con, sql):
 
 def _write(path, header, rows):
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", newline="") as f:
+    with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
@@ -189,11 +189,11 @@ def write_reconciliation(con, path=None):
 
 def _csv_to_markdown(csv_path, md_path, title, intro, image=None):
     """Readable copy of an output CSV for reviewers (the CSV stays the source)."""
-    rows = list(csv.reader(open(csv_path)))
+    rows = list(csv.reader(open(csv_path, encoding="utf-8")))
     esc = lambda s: str(s).replace("|", "\\|")
     lines = [f"# {title}", "", intro, ""] + ([f"![{title}]({image})", ""] if image else []) + [ "| " + " | ".join(rows[0]) + " |", "|" + "---|" * len(rows[0])]
     lines += ["| " + " | ".join(esc(c) for c in r) + " |" for r in rows[1:]]
-    md_path.write_text("\n".join(lines) + "\n")
+    md_path.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
 def main():
